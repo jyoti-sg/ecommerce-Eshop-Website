@@ -1,0 +1,27 @@
+{% extends "ecom/customer_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    {% for p in products %}
+    <div class="col-12 sol-sm-8 col-md-6 col-lg-4">
+      <div class="card-mt-2">
+      <a href="/product_detail/{{p.id}}">  <img class="card-img" src="{% static p.product_img.url %}" height="300px" alt="p_pictures"></a>
+        <div class="card-body">
+          <a href="/product_detail/{{p.id}}">  <h4 class="card-title">{{p.name|slice:":20"}}</h4></a>
+            <a href="/product_detail/{{p.id}}"><p class="card-text">
+            {{p.description|slice:":100"}}
+          </p></a>
+          <div class="buy d-flex justify-content-between align-items-center">
+              <div class="price text-success">
+                <h5 class="mt-4">&#8377;{{p.price}}</h5></div>
+                <a href="{% url 'add-to-cart' p.id %}" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i>ADD to cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+      </div>
+ </div>
+{% endblock %}

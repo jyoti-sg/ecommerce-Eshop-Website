@@ -1,0 +1,62 @@
+{% extends "ecom/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8 mx-auto">
+      <table class='table table-striped'  >
+        <thead >
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Remove From cart</th>
+          </tr>
+        </thead>
+
+        {% for p in products %}
+        {% if p %}
+
+          <tr>
+            <td>{{p.name}}</td>
+            <td><img src="{% static p.product_img.url %}" height="40px"  width="40px" alt="p_pictures"/> </td>
+            <td>{{p.price}}</td>
+            <td>{{p.description|slice:":100"}}</td>
+            <td><a  class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id %}">Remove Item</a></td>
+
+          </tr>
+
+
+        {% else %}
+        <br><br><br>
+        <h1>no products</h1>
+        {% endif %}
+        {% endfor %}
+        <!--<center><td><a  class="btn btn-success btn-xs" href="#">Purchase</a></td></center>-->
+
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8 mx-auto">
+      <table class="table table-stripped text-center" id="dev-table">
+     <thead>
+       <tr>
+         <th colspan=2>Bill</th>
+         </tr>
+         <tr>
+           <td>Amount</td>
+           <td>&#8377 {{total}}</td>
+           </tr>
+           <tr>
+           <td colspan=2><a class="btn btn-success btn-xs" href="/customer-address"><span>Purchase</span></a></td>
+           </tr>
+         </thead>
+       </div>
+      </div>
+    </div>
+
+{% endblock %}

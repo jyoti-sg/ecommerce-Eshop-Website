@@ -1,0 +1,33 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 bg-warning">
+      <form method="POST">
+        {% csrf_token %}
+      <div class="form-group">
+        <label>Email</label>
+    {% render_field addressForm.Email class="form-control" placeholder="Email" %}
+      </div>
+      <div class="form-group">
+        <label>Mobile</label>
+    {% render_field addressForm.Mobile class="form-control" placeholder="Mobile" %}
+      </div>
+      <div class="form-group">
+        <label>shipment address</label>
+    {% render_field addressForm.Address class="form-control" placeholder="building number,city,pin" %}
+
+      </div>
+      <div class="text-center">
+        <input type="submit" value="proced to pay" class="btn btn-success mb-3">
+      </div>
+      </form>
+    </div>
+
+
+</div>
+
+</div>
+{% endblock %}

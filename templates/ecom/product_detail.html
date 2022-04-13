@@ -1,0 +1,22 @@
+{% extends "ecom/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <img class="card-img" src="{% static products.product_img.url %}" height="300px">
+    </div>
+      <div class="col-md-6 text-justify">
+        <h3>{{products.name}}</h3>
+        <p>{{products.description}}</p>
+        <p>Price:{{products.price}}</p>
+        <form>
+          <a class="btn btn-success" href="{% url 'add-to-cart' products.id %}">Add to cart</a>
+          <a class="btn btn-success" href="#">continue Shopping</a>
+
+        </form
+      </div>
+
+  </div>
+</div>
+{% endblock %}

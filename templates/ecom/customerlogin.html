@@ -1,0 +1,26 @@
+{% extends "ecom/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 bg-primary">
+      <h2 class="text-center mt-2">Register </h2>
+      <form method='POST' enctype="multipart/form-data">
+      {% csrf_token %}
+        <div class="form-group">
+          {% render_field form.username placeholder="UserName" class="form-control" %}
+        </div>
+        <div class="form-group">
+          {% render_field form.password placeholder="Password" class="form-control" %}
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mb-3">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

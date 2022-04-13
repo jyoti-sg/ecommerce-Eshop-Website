@@ -1,0 +1,25 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+
+{% block content %}
+<h3 style="text-align:center;">Thank You For Your Order  <strong>{{request.user}}</strong> !</h3> <br><br>
+<div class="container">
+    <header class="card-header" style="text-align:center;"> My Orders / Tracking </header>
+
+    {% for products,order in data %}
+      <div class="col-md-4">
+      {% for product in products %}
+       <div class="card">
+         <div class="card-body">
+           <img src="{% static product.product_img.url %}" class="img-fluid" height=200 width=200>
+           <p class="title"><strong>Name : </strong>{{product.name}} <br> <strong>Description : </strong>{{product.description}}</p> <span class="text-muted"><strong>Price : </strong>{{product.price}} </span>
+        	 <p> <strong>Shipment Address:</strong> <br> {{order.address}}</p>
+           <p> <strong>Status:</strong> <br> {{order.status}} </p>
+         </div>
+        </div>
+      {%endfor%}
+      </div>
+    {%endfor%}
+</div>
+<br><br><br><br><br>
+{% endblock content %}

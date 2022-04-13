@@ -1,0 +1,25 @@
+{% extends "ecom/customer_base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container">
+   <div class="row">
+       <div class="col-md-6 mx-auto mt-5 bg-warning">
+         <form method="POST">
+           {% csrf_token %}
+         <div class="form-group">
+           <label>Name </label>
+       {% render_field feedbackForm.name class="form-control" placeholder="Name" %}
+         </div>
+         <div class="form-group">
+           <label>Feedback </label>
+       {% render_field feedbackForm.feedback class="form-control" placeholder="Feedback" %}
+         </div>
+
+         <div class="text-center ">
+           <input type="submit" value="Proceed To Pay" class="btn btn-success mb-3" />
+         </div>
+       </form>
+       </div>
+     </div>
+</div>
+{% endblock %}
